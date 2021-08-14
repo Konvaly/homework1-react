@@ -1,14 +1,22 @@
 import React from 'react';
+import styles from './UsersListHW.module.css';
 
 function UserListItemHW(props) {
   const {
-    user: { id, imgSrc, firstName, lastName, age },
+    user: { imgSrc, firstName, lastName, age, isSelected },
+    onClickHandler,
+    userDisable,
   } = props;
 
+  const liStyle = { backgroundColor: '#AFEEEE', border: '1px solid #008080' };
+
   return (
-    <li>
-      ID: '{id}' UserPhoto: '{imgSrc}' Fullname: '{firstName} {lastName}' Age: '
-      {age}'
+    <li style={isSelected ? liStyle : null} className={styles.container}>
+      <div onClick={onClickHandler}>
+        <img className={styles.userPhoto} src={imgSrc}></img>
+        {firstName} {lastName} {age} years
+      </div>
+      <button onClick={userDisable}>Delete</button>
     </li>
   );
 }
