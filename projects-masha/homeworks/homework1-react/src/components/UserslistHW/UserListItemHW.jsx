@@ -12,11 +12,15 @@ function UserListItemHW(props) {
 
   return (
     <li style={isSelected ? liStyle : null} className={styles.container}>
-      <div onClick={onClickHandler}>
+      <div onClick={onClickHandler} className={styles.userInfo}>
         <img className={styles.userPhoto} src={imgSrc}></img>
-        {firstName} {lastName} {age} years
+        <div className={styles.nameAge}>
+          {firstName} {lastName} {age} years
+        </div>
       </div>
-      <button onClick={userDisable}>Delete</button>
+      <button onClick={userDisable} className={styles.btn}>
+        Delete
+      </button>
     </li>
   );
 }

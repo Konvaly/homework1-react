@@ -93,30 +93,25 @@ class UserslistHW extends Component {
     };
   }
 
-  mapUser = (user, id) => {
+  mapUser = (user, index) => {
     const { users } = this.state;
     const onClickHandler = () => {
       const selectedUsers = [...users];
-      selectedUsers[id].isSelected = !selectedUsers[id].isSelected;
+      selectedUsers[index].isSelected = !selectedUsers[index].isSelected;
       this.setState({ users: selectedUsers });
-      // const userDisable = () => {
-      //   const usersWithDeletedPerson = [...users];
-      //   if (usersWithDeletedPerson.indexOf('id') >= 0) {
-      //     usersWithDeletedPerson.splice(
-      //       usersWithDeletedPerson.indexOf('id'),
-      //       1
-      //     );
-      // }
-
-      // this.setState({ users: usersWithDeletedPerson });
-      // };
     };
+    const userDisable = () => {
+      const usersWithDeletedPerson = [...users];
+      usersWithDeletedPerson.splice(index, 1);
+      this.setState({ users: usersWithDeletedPerson });
+    };
+
     return (
       <UserListItemHW
         key={user.id}
         user={user}
         onClickHandler={onClickHandler}
-        // userDisable={userDisable}
+        userDisable={userDisable}
       />
     );
   };
